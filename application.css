@@ -1,0 +1,39 @@
+body {
+	font-family: Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", sans-serif;
+	background-color: #ececec;
+}
+.container {
+	width: 960px;
+	margin: auto;
+}
+
+#incident_form {
+}
+
+#incident_form p, #incident_form select, #incident_form input,  #incident_form textarea,
+#incident_form button {
+	font-size: 200%;
+	display: block;
+	float: left;
+}
+
+#incident_form p {
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+#incident_form textarea {
+	width: 800px;
+	height: 100px;
+}
+
+.description, .top {
+	margin-top: 20px;
+}
+
+#map {
+	width: 800px;
+	height: 400px;
+}
