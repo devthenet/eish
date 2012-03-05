@@ -37,10 +37,49 @@ window.ProvinceListView = Backbone.View.extend({
   }
 })
 
+/* Incident Types */
+window.IncidentType = Backbone.Model.extend()
+
+window.IncidentTypeList = Backbone.Collection.extend({
+  model: IncidentType,
+  url: 'incident_types'
+})
+
+window.IncidentItemView = Backbone.View.extend({
+  tagName: 'option',
+
+  initialize: function() {
+    _.bindAll(this, 'render')
+  },
+
+  render: function() {
+    $(this.el).html(this.model.get('name') ).attr({ value: this.model.get('name') })
+    return this
+  }
+})
+
+window.IncidentListView = Backbone.View.extend({
+  el: $('#incident_types'),
+
+  initialize: function() {
+     _.bindAll(this, 'render')
+     this.collection.on('reset', this.render, this)
+  },
+
+  render: function() {
+    self = this
+     _.each(this.collection.models, function(province) {
+       $(self.el).append( new IncidentItemView({model: province}).render().el)
+     })
+    return this
+  }
+})
+
+
 /* Google maps wrappers */
 window.MapLocation = Backbone.Model.extend({
   initialize: function() {
-    this.geocoder = new google.maps.Geocoder();
+    this.geocoder = new google.maps.Geocoder()
   },
   
   setAddress: function(address){
@@ -113,6 +152,9 @@ jQuery(document).ready(function() {
   var province_list =  new ProvinceList()
   province_list.fetch()
   var province_list_view = new ProvinceListView({collection: province_list })
+  var incident_list = new IncidentTypeList()
+  incident_list.fetch()
+  var incident_list_view = new IncidentListView({collection: incident_list})
   var map = new Map()
   var map_location_form = new MapLocationForm({map: map})
   window.map_location_form = map_location_form
