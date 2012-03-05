@@ -1,0 +1,29 @@
+/* Foundation v2.2 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Google maps
+
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+/* -----------------------------------------
+   Google Maps
+----------------------------------------- */
+#map_container {
+
+}
+#map_container #map_canvas {
+  width: 100%;
+  /* can't figure out how to make this vertically fluid, fuck! */
+  height: 400px;
+}
+
+
