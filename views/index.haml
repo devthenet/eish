@@ -1,0 +1,58 @@
+!!!
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8] <html class="no-js lt-ie9" lang="en">
+/ [if gt IE 8]><!
+%html{:lang => "en"}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    %title Eish - Incident Reporting for South Africa
+    / Included CSS Files
+    %link{:href => "stylesheets/foundation.css", :rel => "stylesheet"}
+      %link{:href => "stylesheets/app.css", :rel => "stylesheet"}
+        /[if lt IE 9]
+          <link rel="stylesheet" href="stylesheets/ie.css">
+        / IE Fix for HTML5 Tags
+        /[if lt IE 9]
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    / container
+    .container
+      .row
+        .twelve.columns
+          %h1 Eish - Incident Reports for South Africa
+      .row
+        %form.nice
+          .two.columns
+            %select#provinces
+          .seven.columns
+            %input#address.expand.input-text{:type => "text"}/
+          .three.columns
+            %a#find_address.green.button{:href => "#"} Find
+      .row
+        %form.nice
+          .two.columns
+            %select#incident_types
+          .seven.columns
+            %textarea.expand.text-area
+          .three.columns
+            %a#report_incident.green.button{:href => "#"} Report Incident
+      #map_container.row
+        .twelve.columns
+          #map_canvas
+    / Included ZURB foundation JS Files
+    %script{:src => "javascripts/lib/jquery.min.js"}
+    %script{:src => "javascripts/lib/modernizr.foundation.js"}
+    %script{:src => "javascripts/lib/foundation.js"}
+    %script{:src => "javascripts/lib/app.js"}
+    / Included backbone.js files
+    %script{:src => "javascripts/lib/underscore.js"}
+    %script{:src => "javascripts/lib/backbone.js"}
+    / Google Maps
+    %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyB_9LmLR7oC_Gsq1ireENLC6RDvDnYfNlw&sensor=true", :type => "text/javascript"}
+    / JS Application entry point
+    %script{:src => "javascripts/app.js"}
